@@ -27,6 +27,7 @@ class AuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role' => $request->role ?? 0
         ]);
 
         return response()->json(['message' => 'User registered successfully!'], 201);
@@ -42,6 +43,7 @@ class AuthController extends Controller
 
             return response()->json([
                 'message' => 'Logged In Successfully !',
+                'user' => $user,
                 'token' => $token
             ]);
         }

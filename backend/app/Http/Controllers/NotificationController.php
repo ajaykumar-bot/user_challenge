@@ -31,7 +31,7 @@ class NotificationController extends Controller
     // Get all notifications for the authenticated user
     public function index()
     {
-        $notifications = Notification::where('user_id', auth()->id())->get();
+        $notifications = Notification::where('user_id', auth()->id())->orderBy('created_at', 'desc')->get();
         return response()->json($notifications);
     }
 

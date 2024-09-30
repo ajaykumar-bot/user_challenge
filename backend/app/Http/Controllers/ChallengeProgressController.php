@@ -22,18 +22,28 @@ class ChallengeProgressController extends Controller
 
         $challenge = Challenge::findOrFail($id);
 
-        $progress = ChallengeProgress::create([
-            'challenge_id' => $challenge->id,
-            'progress_date' => $request->progress_date,
-            'status' => $request->status,
-        ]);
+        $progress = ChallengeProgress::updateOrCreate(
+            [
+                'challenge_id' => $challenge->id,
+                'progress_date' => $request->progress_date
+            ],
+            [
+                'challenge_id' => $challenge->id,
+                'progress_date' => $request->progress_date,
+                'status' => $request->status,
+            ]
+        );
 
         return response()->json($progress, 201);
     }
 
-    public function index($id)
+    public function index(Request $request)
     {
-        $progress = ChallengeProgress::where('challenge_id', $id)->get();
-        return response()->json($progress);
+        $challenges = Challenge::with('progress')->get()->map(function ($challenge) {
+            $challenge->total_parts = $challenge->totalParts(); // Add total_parts property
+            return $challenge;
+        });
+
+        return response()->json($challenges);
     }
 }

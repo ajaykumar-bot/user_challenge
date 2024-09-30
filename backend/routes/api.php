@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ChallengeController;
 use App\Http\Controllers\ChallengeProgressController;
 use App\Http\Controllers\NotificationController;
 use Illuminate\Http\Request;
@@ -19,11 +20,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
-Route::middleware('auth:api')->group(function(){
+Route::middleware('auth:api')->group(function () {
 
     // Challenge Routes
+    Route::post('challenges', [ChallengeController::class, 'store']);
+    Route::get('challenges', [ChallengeController::class, 'index']);
+    Route::get('challenges/{id}', [ChallengeController::class, 'edit']);
+    Route::put('challenges/{id}', [ChallengeController::class, 'update']);
+    Route::delete('challenges/{id}', [ChallengeController::class, 'delete']);
+
+    Route::get('challenges-progress', [ChallengeProgressController::class, 'index']);
     Route::post('challenges/{id}/progress', [ChallengeProgressController::class, 'store']);
-    Route::get('challenges/{id}/progress', [ChallengeProgressController::class, 'index']);
 
     // Notification Routes
     Route::get('notifications', [NotificationController::class, 'index']);

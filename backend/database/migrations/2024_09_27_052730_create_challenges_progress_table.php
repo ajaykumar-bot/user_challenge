@@ -16,9 +16,10 @@ return new class extends Migration
             $table->foreignId('challenge_id')->constrained('challenges')->onDelete('cascade');
             $table->date('progress_date');
             $table->enum('status', ['completed', 'missed']);
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();
 
-            $table->unique(['challenge_id', 'progress_date']); // Ensures unique progress per date per challenge
+            $table->unique(['challenge_id', 'progress_date', 'user_id']); // Ensure unique progress per date per challenge for each user
         });
     }
 

@@ -10,7 +10,10 @@ class ChallengeProgress extends Model
     use HasFactory;
 
     protected $fillable = [
-        'challenge_id', 'progress_date', 'status',
+        'challenge_id',
+        'user_id',
+        'progress_date',
+        'status',
     ];
 
     public function challenge()

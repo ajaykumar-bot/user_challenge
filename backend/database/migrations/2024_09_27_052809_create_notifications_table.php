@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->text('message');
-            $table->enum('status', ['sent', 'pending', 'failed'])->default('pending');
+            $table->boolean('is_read')->default(false);
             $table->timestamps();
         });
     }

@@ -46,22 +46,41 @@ The Challenge Tracker Application is a full-stack application built with **Larav
    ```
 
 2. **Install Dependency**:
-   composer install ( use php 8.2 or greater)
+   Use php 8.2 or greater
+   ```
+   composer install
+   ```
 3. **Copy .env.example to .env**:
+   ```
    cp .env.example .env
+   ```
 4. **Generate application key**:
+   ```
    php artisan key:generate
+   ```
 5. **Run migrations**:
+   ```
    php artisan migrate
+   ```
 6. **Start the Laravel server**:
+   ```
    php artisan serve
+   ```
 
 ### Fronten Setup
 
 1. **Navigate to Directory**:
+
+   ```
    cd ../frontend
+   ```
 
 2. **Install Dependency**:
-   npm install ( use node 20 or greater)
+   use node 20 or greater
+   ```
+   npm install
+   ```
 3. **Start the Server**:
+   ```
    npm start
+   ```

@@ -8,7 +8,6 @@ import {
 } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Sidebar from './components/Sidebar';
-import Header from './components/Header'; // Import the Header component
 import Login from './components/Login';
 import Register from './components/Register';
 import Dashboard from './components/Dashboard';
@@ -17,6 +16,7 @@ import ChallengeList from './components/ChallengeList';
 import ProgressTracker from './components/ProgressTracker';
 import Notification from './components/Notification';
 import EditChallenge from './components/EditChallenge';
+import User from './components/User';
 import { useAuth } from './context/AuthContext';
 
 const AppRoutes = () => {
@@ -52,6 +52,7 @@ const AppRoutes = () => {
           )}
 
           <Route path="/challenges/:id/edit" element={<EditChallenge />} />
+          <Route path="/manage-users" element={<User />} />
         </Routes>
       </div>
     </div>

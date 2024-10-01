@@ -31,6 +31,13 @@ const Sidebar = () => {
             <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
+
+        {user && user.role === 1 && (
+          <NavLink to="/manage-users" className="nav-link">
+            Manage Users
+          </NavLink>
+        )}
+
         <NavLink to="/challenges" className="nav-link">
           Challenges List
         </NavLink>

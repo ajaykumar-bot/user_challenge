@@ -1,4 +1,3 @@
-// src/context/AuthContext.js
 import React, { createContext, useContext, useState } from 'react';
 import AuthService from '../services/AuthenticationService';
 
@@ -26,12 +25,12 @@ export const AuthProvider = ({ children }) => {
   };
 
   const isAuthenticated = () => {
-    return !!user; // Returns true if user is not null
+    return !!user; // Ensure both user and token exist
   };
 
   return (
     <AuthContext.Provider
-      value={{ user, login, logout, isAuthenticated, token }}>
+      value={{ user, token, login, logout, isAuthenticated }}>
       {children}
     </AuthContext.Provider>
   );

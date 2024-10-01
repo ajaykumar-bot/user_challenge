@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ChallengeController;
 use App\Http\Controllers\ChallengeProgressController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +35,7 @@ Route::middleware('auth:api')->group(function () {
 
     // Notification Routes
     Route::get('notifications', [NotificationController::class, 'index']);
-    Route::post('notifications', [NotificationController::class, 'store']);
-    Route::put('notifications/{id}/status', [NotificationController::class, 'updateStatus']);
+
+    // User Route
+    Route::resource('users', UserController::class);
 });
